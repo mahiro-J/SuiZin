@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private float jumpCheckHeight = 6.0f;
     private GameInputs _inputs;
-    private Transform _myTransform;
+    private Transform _myTransform; 
     
     
     
@@ -34,11 +34,6 @@ public class PlayerController : MonoBehaviour
 
         _inputs.Player.Jump.started += OnJump;
         _inputs.Enable();
-    }
-
-    private void Start()
-    {
-        
     }
 
     // Update is called once per frame

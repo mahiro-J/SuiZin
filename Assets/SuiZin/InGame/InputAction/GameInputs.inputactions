@@ -189,6 +189,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Camera",
+            "id": "c7134f59-de87-4b21-af5a-ddb8b35c4300",
+            "actions": [
+                {
+                    "name": "SwitchFS",
+                    "type": "Button",
+                    "id": "b70fc166-0dc2-489e-adf3-cb1268395703",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b0d0181e-9152-4b2f-b2ac-e64cd36a1467",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchFS",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
