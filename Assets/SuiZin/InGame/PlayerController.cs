@@ -7,7 +7,7 @@ using Alchemy.Inspector;
 public class PlayerController : MonoBehaviour
 {
     private Vector3 _moveVec;
-    private float _rotatePower; // 1か-1の値を取る
+    private Vector2 _rotatePower; // 1か-1の値を取る
     
     [TabGroup("Speed","Now Speed")][ReadOnly][HideLabel]
     public float speed;
@@ -15,18 +15,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float normalSpeed = 10f;
     [TabGroup("Speed","Max Speed")][HideLabel]
     [SerializeField] private float maxSpeed = 50;
+
     
     private bool _isSprint;
 
     private GameInputs _inputs;
     private Transform _myTransform; 
     
+    [HideLabel][SerializeField]
+    private Transform eyeTransform;
+    
     private Rigidbody _rb;
+    [TabGroup("Rotation","Eye Rotation Speed")][HideLabel]
+    [SerializeField] private float eyeRotationSpeed = 100f;
+    [TabGroup("Rotation","Body Rotation Speed")][HideLabel]
     [SerializeField] private float rotationSpeed = 100f;
     [TabGroup("Jump","Jump Force")][HideLabel]
     [SerializeField] private float jumpForce = 10f;
     [TabGroup("Jump","Jump Check Height")][HideLabel]
     [SerializeField] private float jumpCheckHeight = 6.0f;
+
+    private float _currentPitch = 0f;
     
     
     
@@ -65,11 +74,19 @@ public class PlayerController : MonoBehaviour
         // rb.MovePosition(rb.position + movement);
         _rb.linearVelocity = vec;
     }
-    void Rotate(float rotatePower)
+    void Rotate(Vector2 rotatePower)
     {
-        if(rotatePower==0) return;
-        Quaternion deltaRotation = Quaternion.Euler(new Vector3(0f, rotatePower * rotationSpeed, 0f));
+        if(rotatePower.x==0 && rotatePower.y==0) return;
+        //Y軸回転
+        float yRotation = rotatePower.x * rotationSpeed * Time.deltaTime;
+        Quaternion deltaRotation = Quaternion.Euler(new Vector3(0,yRotation , 0));
         _rb.MoveRotation(_rb.rotation* deltaRotation);
+        
+        //X軸回転
+        float xRotation = rotatePower.y * eyeRotationSpeed * Time.deltaTime;
+        _currentPitch -= xRotation;
+        _currentPitch = Mathf.Clamp(_currentPitch, -80f, 80f);
+        eyeTransform.localRotation = Quaternion.Euler(_currentPitch,0f,0f);
     }
 
     bool OnGroundCheck()
@@ -94,9 +111,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnRotate(InputAction.CallbackContext context)
     {
-        Debug.Log("a");
         //1なら右回転 -1なら左回転
-        _rotatePower = context.ReadValue<float>();
+        _rotatePower = context.ReadValue<Vector2>();
     }
 
     public void OnSprint(InputAction.CallbackContext context)
