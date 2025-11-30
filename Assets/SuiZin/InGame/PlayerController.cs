@@ -2,26 +2,38 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
+using Alchemy.Inspector;
 
 public class PlayerController : MonoBehaviour
 {
     private Vector3 _moveVec;
-    private float _rotatePower;
+    private float _rotatePower; // 1か-1の値を取る
+    
+    [TabGroup("Speed","Now Speed")][ReadOnly][HideLabel]
+    public float speed;
+    [TabGroup("Speed","Normal Speed")][HideLabel]
+    [SerializeField] private float normalSpeed = 10f;
+    [TabGroup("Speed","Max Speed")][HideLabel]
+    [SerializeField] private float maxSpeed = 50;
+    
+    private bool _isSprint;
 
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private float speed = 50f;
-    [SerializeField] private float rotationSpeed = 100f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float jumpCheckHeight = 6.0f;
     private GameInputs _inputs;
     private Transform _myTransform; 
+    
+    private Rigidbody _rb;
+    [SerializeField] private float rotationSpeed = 100f;
+    [TabGroup("Jump","Jump Force")][HideLabel]
+    [SerializeField] private float jumpForce = 10f;
+    [TabGroup("Jump","Jump Check Height")][HideLabel]
+    [SerializeField] private float jumpCheckHeight = 6.0f;
     
     
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         _myTransform = transform;
         _inputs = new GameInputs();
 
@@ -29,8 +41,11 @@ public class PlayerController : MonoBehaviour
         _inputs.Player.Move.canceled += OnMove;
         _inputs.Player.Rotate.performed += OnRotate;
         _inputs.Player.Rotate.canceled += OnRotate;
+        _inputs.Player.Sprint.started += OnSprint;
+        _inputs.Player.Sprint.canceled += OnSprint;
         
-        
+        speed = normalSpeed;
+        _isSprint = false;
 
         _inputs.Player.Jump.started += OnJump;
         _inputs.Enable();
@@ -46,15 +61,15 @@ public class PlayerController : MonoBehaviour
     void Move(Vector3 movement, float movespeed)
     {
         var vec = (_myTransform.forward*movement.y + _myTransform.right*movement.x).normalized * (movespeed);
-        vec.y = rb.linearVelocity.y;
+        vec.y = _rb.linearVelocity.y;
         // rb.MovePosition(rb.position + movement);
-        rb.linearVelocity = vec;
+        _rb.linearVelocity = vec;
     }
     void Rotate(float rotatePower)
     {
         if(rotatePower==0) return;
         Quaternion deltaRotation = Quaternion.Euler(new Vector3(0f, rotatePower * rotationSpeed, 0f));
-        rb.MoveRotation(rb.rotation* deltaRotation);
+        _rb.MoveRotation(_rb.rotation* deltaRotation);
     }
 
     bool OnGroundCheck()
@@ -74,21 +89,33 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (!OnGroundCheck()) return;
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
     public void OnRotate(InputAction.CallbackContext context)
     {
         Debug.Log("a");
-        //1なら右回転 2なら左回転
+        //1なら右回転 -1なら左回転
         _rotatePower = context.ReadValue<float>();
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        _isSprint = context.ReadValueAsButton();
+        speed = _isSprint ? maxSpeed : normalSpeed;
     }
     private void OnDestroy()
     {
-        _inputs.Player.Move.performed -= OnMove;
-        _inputs.Player.Move.canceled -= OnMove;
-        
-        _inputs.Player.Jump.started -= OnJump;
-        _inputs.Disable();
+        if (_inputs != null)
+        {
+            _inputs.Player.Move.performed -= OnMove;
+            _inputs.Player.Move.canceled -= OnMove;
+            _inputs.Player.Rotate.performed -= OnRotate;
+            _inputs.Player.Rotate.canceled -= OnRotate;
+            _inputs.Player.Jump.started -= OnJump;
+            _inputs.Player.Sprint.started -= OnSprint;
+            _inputs.Player.Sprint.canceled -= OnSprint;
+            _inputs.Disable();
+        }
     }
 }
