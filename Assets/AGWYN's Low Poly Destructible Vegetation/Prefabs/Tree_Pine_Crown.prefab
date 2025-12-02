@@ -62,12 +62,14 @@ MeshRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8761910824519130491, guid: 3094a646d4718ad448c927e501837d5f, type: 3}
-  - {fileID: -1580606072890511930, guid: 3094a646d4718ad448c927e501837d5f, type: 3}
-  - {fileID: -5533392412546078577, guid: 3094a646d4718ad448c927e501837d5f, type: 3}
+  - {fileID: 2100000, guid: ecf3ca4605ac2eb40bae1e13e90f123f, type: 2}
+  - {fileID: 2100000, guid: a6e9a1e848949a847ba676a0d64616d9, type: 2}
+  - {fileID: 2100000, guid: 0808b4816ebc38b4093588967f00fe27, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,6 +87,7 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
