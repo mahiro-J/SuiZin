@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
     {
         var vec = (_myTransform.forward*movement.y + _myTransform.right*movement.x).normalized * (movespeed);
         vec.y = _rb.linearVelocity.y;
-        // rb.MovePosition(rb.position + movement);
         _rb.linearVelocity = vec;
     }
     void Rotate(Vector2 rotatePower)
