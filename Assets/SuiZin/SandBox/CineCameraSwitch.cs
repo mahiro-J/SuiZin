@@ -7,11 +7,11 @@ public class CineCameraSwitch : MonoBehaviour
 {
     [SerializeField] private CinemachineCamera thirdCam;
     [SerializeField] private CinemachineCamera firstCam;
-    GameInputs _inputs;
+    InputsRyeField _inputs;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        _inputs = new GameInputs();
+        _inputs = new InputsRyeField();
         _inputs.Camera.SwitchFS.started += OnSwitchCamera;
         
         _inputs.Enable();

@@ -6,7 +6,8 @@
         "R3.Unity",
         "Common",
         "Unity.InputSystem",
-        ""
+        "Alchemy",
+        "Unity.Cinemachine"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

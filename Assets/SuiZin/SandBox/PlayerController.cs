@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     
     private bool _isSprint;
 
-    private GameInputs _inputs;
+    private InputsRyeField _inputs;
     private Transform _myTransform; 
     
     [HideLabel][SerializeField]
@@ -44,7 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _myTransform = transform;
-        _inputs = new GameInputs();
+        _inputs = new InputsRyeField();
 
         _inputs.Player.Move.performed += OnMove;
         _inputs.Player.Move.canceled += OnMove;
