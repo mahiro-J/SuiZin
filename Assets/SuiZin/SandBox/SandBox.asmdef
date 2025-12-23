@@ -1,0 +1,20 @@
+{
+    "name": "SandBox",
+    "rootNamespace": "",
+    "references": [
+        "Unity.TextMeshPro",
+        "R3.Unity",
+        "Common",
+        "Unity.InputSystem",
+        ""
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
