@@ -7,7 +7,8 @@
         "Common",
         "Unity.InputSystem",
         "Alchemy",
-        "Unity.Cinemachine"
+        "Unity.Cinemachine",
+        "UnityScreenNavigator"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

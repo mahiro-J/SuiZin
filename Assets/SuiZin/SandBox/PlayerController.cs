@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
     void Rotate(Vector2 rotatePower)
     {
         if(rotatePower.x==0 && rotatePower.y==0) return;
+        if(!eyeTransform)return;
         //Y軸回転
         float yRotation = rotatePower.x * rotationSpeed * Time.deltaTime;
         Quaternion deltaRotation = Quaternion.Euler(new Vector3(0,yRotation , 0));
