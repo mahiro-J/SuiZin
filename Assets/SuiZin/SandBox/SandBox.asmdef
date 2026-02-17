@@ -8,7 +8,8 @@
         "Unity.InputSystem",
         "Alchemy",
         "Unity.Cinemachine",
-        "UnityScreenNavigator"
+        "UnityScreenNavigator",
+        "UniTask"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
