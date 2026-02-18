@@ -473,7 +473,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.75
+  m_fontSize: 18
   m_fontSizeBase: 63.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 62.75
+  m_fontSize: 18
   m_fontSizeBase: 63.3
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -711,7 +711,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   openButton: {fileID: 4581662075957769584}
-  countButton: {fileID: 9179700192650605955}
+  closeButton: {fileID: 912659265441131502}
   countText: {fileID: 7183033465454769774}
   pageNumText: {fileID: 0}
 --- !u!114 &7485860298202098334
@@ -727,7 +727,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: SandBox::TopPresenter
   topView: {fileID: 3442540972408645004}
-  containerName: PageContainer
   NextPage: SenkeiPage
 --- !u!1 &8072160255093590914
 GameObject:
