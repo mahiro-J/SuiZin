@@ -4,7 +4,7 @@ using UnityScreenNavigator.Runtime.Core.Page;
 
 namespace SuiZin.SandBox.ScreenNavi
 {
-    public class AppInitializer : MonoBehaviour
+    public class PageInitializer : MonoBehaviour
     {
         [SerializeField] private PageContainer pageContainer;
         private async UniTaskVoid Start()
