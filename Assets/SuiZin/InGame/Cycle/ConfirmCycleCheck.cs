@@ -11,13 +11,14 @@ public class ConfirmCycleCheck : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     async UniTask Start()
     {
+        
         _view.OnOpenButtonClicked
-            .Subscribe(_=>
+            .SubscribeAwait(async (_view,ct)=>
             {
-                Router.PushPage(ResourceKeys.CycleCheck, true).Forget();
-                Router.PopModal().Forget();
+                await Router.PopModal(false);
+                await Router.PushPage(ResourceKeys.CycleCheck);
                 
-            })
+            })  
             .AddTo(this);
         
         _view.OnCloseButtonClicked
