@@ -29,6 +29,7 @@ namespace SuiZin.InGame
 
         public static async UniTask PopModal(bool isAnimation = true)
         {
+            if (_modalContainer.Modals.Count == 0) return;
             if (_modalContainer == null) return;
             await _modalContainer.Pop(isAnimation).Task;
         }
@@ -41,6 +42,7 @@ namespace SuiZin.InGame
         
         public static async UniTask PopPage(bool isAnimation = true)
         {
+            if (_pageContainer.Pages.Count == 0) return;
             if (_pageContainer == null) return;
             await _pageContainer.Pop(isAnimation).Task;
         }

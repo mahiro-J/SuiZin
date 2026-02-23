@@ -7,9 +7,9 @@ using UnityScreenNavigator.Runtime.Core.Sheet;
 
 public class AppInitializer : MonoBehaviour
 {
-    [SerializeField] private ModalContainer modalContainer;
-    [SerializeField] private PageContainer pageContainer;
-    [SerializeField] private SheetContainer sheetContainer;
+    ModalContainer modalContainer;
+    PageContainer pageContainer;
+    SheetContainer sheetContainer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -18,6 +18,9 @@ public class AppInitializer : MonoBehaviour
 
     private void InitializeApp()
     {
+        modalContainer = ModalContainer.Find(ContainerKeys.ModalContainer);
+        pageContainer = PageContainer.Find(ContainerKeys.PageContainer);
+        // sheetContainer = SheetContainer.Find(ContainerKeys.SheetContainer);
         Router.Initialize(pageContainer, modalContainer/*, SheetContainer sheetContainer*/);
     }
 }

@@ -13,7 +13,6 @@ namespace SuiZin.InGame
         [SerializeField] private CycleView cycleView;
         private CancellationToken ct;
         ModalContainer modalContainer;
-        [SerializeField] private string modalName;
 
         async UniTask Start()
         {
@@ -25,7 +24,7 @@ namespace SuiZin.InGame
                     if (isInRange)
                     {
                         await Router.WaitModalTransition();
-                        await Router.PushModal(modalName,false);
+                        await Router.PushModal(ResourceKeys.ConfirmCycleCheck,false);
                     }
                     else
                     {
