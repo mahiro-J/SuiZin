@@ -553,7 +553,7 @@ GameObject:
   - component: {fileID: 8914117371745415086}
   - component: {fileID: 207979009121888063}
   m_Layer: 5
-  m_Name: Modal1
+  m_Name: ConfirmCycleCheckModal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,7 +579,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -400, y: -400}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &544961783961408665
 CanvasRenderer:
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   modalContainer: {fileID: 0}
-  nextModalName: Modal1
+  nextpageName: CycleCheckPage
   _view: {fileID: 8914117371745415086}
 --- !u!1 &9112169202918511418
 GameObject:

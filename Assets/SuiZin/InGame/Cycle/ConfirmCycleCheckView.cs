@@ -3,7 +3,7 @@ using R3;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
 
-public class Modal1View : MonoBehaviour
+public class ConfirmCycleCheckView : MonoBehaviour
 {
     [SerializeField] private Button openButton;
     [SerializeField] private Button closeButton;
