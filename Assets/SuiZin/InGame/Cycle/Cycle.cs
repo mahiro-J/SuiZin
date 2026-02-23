@@ -3,33 +3,61 @@ using R3;
 using UnityEngine;
 using System;
 using System.Threading;
+using UnityScreenNavigator.Runtime.Core.Modal;
 
-public class Cycle : MonoBehaviour
+namespace SuiZin.InGame
 {
-    [SerializeField] private CycleModel cycleModel;
-    [SerializeField] private CycleView cycleView;
-    private CancellationToken ct;
-
-    async UniTask Start()
+    public class Cycle : MonoBehaviour
     {
-        ct = destroyCancellationToken;
-        cycleModel._isPlayerInRange
-            .Skip(1)
-            .SubscribeAwait(async (isInRange,ct) =>
-            {
-                if (isInRange)
+        [SerializeField] private CycleModel cycleModel;
+        [SerializeField] private CycleView cycleView;
+        private CancellationToken ct;
+        ModalContainer modalContainer;
+        [SerializeField] private string modalName;
+
+        async UniTask Start()
+        {
+            ct = destroyCancellationToken;
+            cycleModel._isPlayerInRange
+                .Skip(1)
+                .SubscribeAwait(async (isInRange,ct) =>
                 {
-                    await cycleView.WaitModalTransition(ct);
-                    await cycleView.ShowModal(ct);
-                }
-                else
-                {
-                    await cycleView.WaitModalTransition(ct);
-                    await cycleView.HideModal(ct);
-                }
-            })
-            .AddTo(this);
+                    if (isInRange)
+                    {
+                        await Router.WaitModalTransition();
+                        await Router.PushModal(modalName,false);
+                    }
+                    else
+                    {
+                        await Router.WaitModalTransition();
+                        await Router.PopModal(false);
+                    }
+                })
+                .AddTo(this);
+        }
+        
+        // public async UniTask ShowModal(CancellationToken ct)
+        // {
+        //     if (modalContainer.Modals.Count > 0) return;
+        //     await modalContainer.Push(modalName,false);
+        // }
+        //
+        // public async UniTask HideModal(CancellationToken ct)
+        // {
+        //     if (modalContainer.Modals.Count == 0)
+        //     {
+        //         Debug.LogError("No modals to pop.");
+        //         return;
+        //     }
+        //     await modalContainer.Pop(false);
+        // }
+        
+        // public async UniTask WaitModalTransition(CancellationToken ct)
+        // {
+        //     await UniTask.WaitWhile(() => modalContainer.IsInTransition);
+        // }
+        
+
     }
     
-
 }

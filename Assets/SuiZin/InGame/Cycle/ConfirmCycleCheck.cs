@@ -3,12 +3,12 @@ using R3;
 using Cysharp.Threading.Tasks;
 using UnityScreenNavigator.Runtime.Core.Modal;
 
-public class Modal1 : MonoBehaviour
+public class ConfirmCycleCheck : MonoBehaviour
 {
     [SerializeField] private ModalContainer modalContainer;
-    [SerializeField] private string nextModalName = "Modal2";
+    [SerializeField] private string nextpageName;
 
-    [SerializeField]private Modal1View _view;
+    [SerializeField]private ConfirmCycleCheckView _view;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     async UniTask Start()
     {
@@ -24,14 +24,14 @@ public class Modal1 : MonoBehaviour
 
     async UniTask OpenNextModal()
     {
-        var handle = modalContainer.Push(nextModalName, true);
-        await handle.Task;
+        // var handle = modalContainer.Push(nextModalName, true);
+        // await handle.Task;
     }
 
     async UniTask CloseThisModal()
     {
-        var handle = modalContainer.Pop(true);
-        await handle.Task;
+        // var handle = modalContainer.Pop(true);
+        // await handle.Task;
     }
     
 }
