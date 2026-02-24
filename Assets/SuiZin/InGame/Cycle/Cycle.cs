@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.Threading;
 using UnityScreenNavigator.Runtime.Core.Modal;
+using SuiZin.Common;
 
 namespace SuiZin.InGame
 {
