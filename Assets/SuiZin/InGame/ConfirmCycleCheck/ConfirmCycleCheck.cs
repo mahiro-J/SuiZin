@@ -2,7 +2,7 @@ using System.Collections.Specialized;
 using UnityEngine;
 using R3;
 using Cysharp.Threading.Tasks;
-using SuiZin.InGame;
+using SuiZin.Common;
 using UnityScreenNavigator.Runtime.Core.Modal;
 
 public class ConfirmCycleCheck : MonoBehaviour

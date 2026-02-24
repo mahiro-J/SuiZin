@@ -1,4 +1,4 @@
-namespace SuiZin.InGame
+namespace SuiZin.Common
 {
     public static class ResourceKeys
     {

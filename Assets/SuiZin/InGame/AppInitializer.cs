@@ -4,6 +4,7 @@ using SuiZin.InGame;
 using UnityScreenNavigator.Runtime.Core.Modal;
 using UnityScreenNavigator.Runtime.Core.Page;
 using UnityScreenNavigator.Runtime.Core.Sheet;
+using SuiZin.Common;
 
 public class AppInitializer : MonoBehaviour
 {

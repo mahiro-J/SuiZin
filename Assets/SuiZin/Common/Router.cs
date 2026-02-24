@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityScreenNavigator.Runtime.Core.Page;
 using UnityScreenNavigator.Runtime.Core.Modal;
 using UnityScreenNavigator.Runtime.Core.Sheet;
-namespace SuiZin.InGame
+namespace SuiZin.Common
 {
     public static class Router
     {

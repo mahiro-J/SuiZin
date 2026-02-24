@@ -58,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
         _inputs.Player.Jump.started += OnJump;
         _inputs.Enable();
+        
+        
     }
 
     // Update is called once per frame
@@ -133,5 +135,15 @@ public class PlayerController : MonoBehaviour
             _inputs.Player.Sprint.canceled -= OnSprint;
             _inputs.Disable();
         }
+    }
+    
+    public void InputDisable()
+    {
+        _inputs.Disable();
+    }
+    
+    public void InputEnable()
+    {
+        _inputs.Enable();
     }
 }

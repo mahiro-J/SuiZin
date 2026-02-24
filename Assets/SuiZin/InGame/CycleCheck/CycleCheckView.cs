@@ -1,16 +1,17 @@
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using R3;
 
 public class CycleCheckView : MonoBehaviour
 {
     [SerializeField] private Button closeButton;
-    [SerializeField] private InputField dateNowIF;
-    [SerializeField] private InputField dateLimitIF;
+    [SerializeField] private TMP_InputField dateNowIF;
+    [SerializeField] private TMP_InputField dateLimitIF;
 
-    private Observable<Unit> OnCloseButtonPushed => closeButton.OnClickAsObservable();
-    private Observable<string> OnDateNowChanged => dateNowIF.OnValueChangedAsObservable();
-    private Observable<string> OnDateLimitChanged => dateLimitIF.OnValueChangedAsObservable();
+    public Observable<Unit> OnCloseButtonPushed => closeButton.OnClickAsObservable();
+    public  Observable<string> OnDateNowChanged => dateNowIF.onValueChanged.AsObservable();
+    public Observable<string> OnDateLimitChanged => dateLimitIF.onValueChanged.AsObservable();
     
     
 }
