@@ -3,8 +3,9 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using Alchemy.Inspector;
+using R3;
 
-namespace SuiZin.SandBox
+namespace SuiZin.InGame
 {
     public class PlayerController : MonoBehaviour
     {
@@ -21,7 +22,7 @@ namespace SuiZin.SandBox
         
         private bool _isSprint;
 
-        private InputsRyeField _inputs;
+        private PlayerInput _inputs;
         private Transform _myTransform; 
         
         [HideLabel][SerializeField]
@@ -46,7 +47,8 @@ namespace SuiZin.SandBox
         {
             _rb = GetComponent<Rigidbody>();
             _myTransform = transform;
-            _inputs = new InputsRyeField();
+            _inputs = new PlayerInput();
+            
 
             _inputs.Player.Move.performed += OnMove;
             _inputs.Player.Move.canceled += OnMove;
@@ -61,6 +63,12 @@ namespace SuiZin.SandBox
             _inputs.Player.Jump.started += OnJump;
             _inputs.Enable();
             
+            PlayerInputController.isInputable
+                .Subscribe(inputable =>
+                {
+                    if (inputable) _inputs.Enable();
+                    else _inputs.Disable();
+                });
             
         }
 

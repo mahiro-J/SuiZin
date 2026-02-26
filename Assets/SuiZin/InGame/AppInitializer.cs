@@ -22,6 +22,9 @@ public class AppInitializer : MonoBehaviour
         modalContainer = ModalContainer.Find(ContainerKeys.ModalContainer);
         pageContainer = PageContainer.Find(ContainerKeys.PageContainer);
         // sheetContainer = SheetContainer.Find(ContainerKeys.SheetContainer);
+        
+        
         Router.Initialize(pageContainer, modalContainer/*, SheetContainer sheetContainer*/);
+        PlayerInputController.Initialize(pageContainer, modalContainer);
     }
 }
