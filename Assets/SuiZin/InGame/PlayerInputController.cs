@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityScreenNavigator.Runtime.Core.Page;
 using UnityScreenNavigator.Runtime.Core.Modal;
 using UnityScreenNavigator.Runtime.Core.Sheet;
@@ -10,7 +11,8 @@ namespace SuiZin.InGame
         private static PageContainer _pageContainer;
         private static ModalContainer _modalContainer;
 
-        public static ReactiveProperty<bool> isInputable=new();
+        private static readonly ReactiveProperty<bool> _isInputable = new(true);
+        public static Observable<bool> IsInputable => _isInputable;
 
         
         public static void Initialize(PageContainer pageContainer,ModalContainer modalContainer)
@@ -25,7 +27,7 @@ namespace SuiZin.InGame
                 .Subscribe(_ =>
                 {
                     var inputable = pageContainer.Pages.Count == 0 && modalContainer.Modals.Count == 0;
-                    isInputable.Value = inputable;
+                    _isInputable.Value = inputable;
                 });
 
 
