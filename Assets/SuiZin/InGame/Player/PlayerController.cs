@@ -62,14 +62,15 @@ namespace SuiZin.InGame
 
             _inputs.Player.Jump.started += OnJump;
             _inputs.Enable();
-            
-            PlayerInputController.isInputable
+
+            PlayerInputController.IsInputable
                 .Subscribe(inputable =>
                 {
                     if (inputable) _inputs.Enable();
                     else _inputs.Disable();
-                });
-            
+                })
+                .AddTo(this);
+
         }
 
         // Update is called once per frame
