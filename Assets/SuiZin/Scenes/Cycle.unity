@@ -1160,6 +1160,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541957671}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &631835707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1586534432989752, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_Name
+      value: ModularCharacter_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.06378
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.53354
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4760582740654526, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ff493cd6baa032349a466b935b6af92f, type: 3}
 --- !u!1001 &750561247
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1966,7 +2023,7 @@ GameObject:
   - component: {fileID: 1917702868}
   - component: {fileID: 1917702867}
   - component: {fileID: 1917702866}
-  - component: {fileID: 1917702865}
+  - component: {fileID: 1917702871}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -1974,26 +2031,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1917702865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917702864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b57e0822ce3bb14db45985b67805b4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: SandBox::PlayerController
-  speed: 0
-  normalSpeed: 5
-  maxSpeed: 10
-  eyeTransform: {fileID: 0}
-  eyeRotationSpeed: 100
-  rotationSpeed: 100
-  jumpForce: 20
-  jumpCheckHeight: 6
 --- !u!54 &1917702866
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2116,6 +2153,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 933579}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1917702871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917702864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eedb18f9b2ce40d7b4e95e69d10f2e20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: InGame::SuiZin.InGame.PlayerController
+  speed: 0
+  normalSpeed: 5
+  maxSpeed: 10
+  eyeTransform: {fileID: 0}
+  eyeRotationSpeed: 100
+  rotationSpeed: 100
+  jumpForce: 20
+  jumpCheckHeight: 6
 --- !u!1 &2020987831
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,3 +2402,4 @@ SceneRoots:
   - {fileID: 848693515}
   - {fileID: 1323932751}
   - {fileID: 982788022}
+  - {fileID: 631835707}
