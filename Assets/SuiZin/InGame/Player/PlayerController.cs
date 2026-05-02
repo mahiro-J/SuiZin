@@ -7,6 +7,7 @@ using R3;
 
 namespace SuiZin.InGame
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : MonoBehaviour
     {
         private Vector3 _moveVec;

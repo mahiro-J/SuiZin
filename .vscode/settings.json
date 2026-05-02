@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "**/*.meta": true,
+    "**/*.asmdef": true,
+    "**/*.asdmdef": true
+  },
+  "search.exclude": {
+    "**/*.meta": true,
+    "**/*.asmdef": true,
+    "**/*.asdmdef": true
+  }
+}
