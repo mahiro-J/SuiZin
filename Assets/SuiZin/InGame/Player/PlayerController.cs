@@ -38,6 +38,8 @@ namespace SuiZin.InGame
         [SerializeField] private float jumpForce = 10f;
         [TabGroup("Jump","Jump Check Height")][HideLabel]
         [SerializeField] private float jumpCheckHeight = 6.0f;
+        [TabGroup("Jump","Can Jump")][HideLabel]
+        public bool canJump = true;
 
         private float _currentPitch = 0f;
         
@@ -119,8 +121,9 @@ namespace SuiZin.InGame
         }
         public void OnJump(InputAction.CallbackContext context)
         {
+            if (!canJump) return;
             if (!OnGroundCheck()) return;
-                _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            _rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
 
         public void OnRotate(InputAction.CallbackContext context)

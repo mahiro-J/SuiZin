@@ -11,6 +11,14 @@ namespace SuiZin.Common
         private static PageContainer _pageContainer;
         private static ModalContainer _modalContainer;
         private static SheetContainer _sheetContainer;
+
+        private static void EnsureContainers()
+        {
+            if (_modalContainer == null)
+                _modalContainer = ModalContainer.Find(ContainerKeys.ModalContainer);
+            if (_pageContainer == null)
+                _pageContainer = PageContainer.Find(ContainerKeys.PageContainer);
+        }
         
         public static void Initialize(PageContainer pageContainer, ModalContainer modalContainer/*, SheetContainer sheetContainer*/)
         {
@@ -22,6 +30,7 @@ namespace SuiZin.Common
         
         public static async UniTask PushModal(string modalName,bool isAnimation = true)
         {
+            EnsureContainers();
             if (_modalContainer == null) return;
             await _modalContainer.Push(modalName, isAnimation).Task;
         }
@@ -29,31 +38,38 @@ namespace SuiZin.Common
 
         public static async UniTask PopModal(bool isAnimation = true)
         {
-            if (_modalContainer.Modals.Count == 0) return;
+            EnsureContainers();
             if (_modalContainer == null) return;
+            if (_modalContainer.Modals.Count == 0) return;
             await _modalContainer.Pop(isAnimation).Task;
         }
         
         public static async UniTask PushPage(string pageName,bool isAnimation = true)
         {
+            EnsureContainers();
             if (_pageContainer == null) return;
             await _pageContainer.Push(pageName, isAnimation).Task;
         }
         
         public static async UniTask PopPage(bool isAnimation = true)
         {
-            if (_pageContainer.Pages.Count == 0) return;
+            EnsureContainers();
             if (_pageContainer == null) return;
+            if (_pageContainer.Pages.Count == 0) return;
             await _pageContainer.Pop(isAnimation).Task;
         }
         
         public static async UniTask WaitModalTransition()
         {
+            EnsureContainers();
+            if (_modalContainer == null) return;
             await UniTask.WaitWhile(() => _modalContainer.IsInTransition);
         }
         
         public static async UniTask WaitPageTransition()
         {
+            EnsureContainers();
+            if (_pageContainer == null) return;
             await UniTask.WaitWhile(() => _pageContainer.IsInTransition);
         }
     }
