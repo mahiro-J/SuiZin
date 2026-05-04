@@ -1,9 +1,6 @@
 using Cysharp.Threading.Tasks;
 using R3;
 using UnityEngine;
-using System;
-using System.Threading;
-using UnityScreenNavigator.Runtime.Core.Modal;
 using SuiZin.Common;
 
 namespace SuiZin.InGame
@@ -11,26 +8,27 @@ namespace SuiZin.InGame
     public class Cycle : MonoBehaviour
     {
         [SerializeField] private CycleModel cycleModel;
-        [SerializeField] private CycleView cycleView;
-        private CancellationToken ct;
-        ModalContainer modalContainer;
+        private bool _isConfirmModalOpened;
 
         async UniTask Start()
         {
-            ct = destroyCancellationToken;
             cycleModel._isPlayerInRange
                 .Skip(1)
                 .SubscribeAwait(async (isInRange,ct) =>
                 {
                     if (isInRange)
                     {
+                        if (_isConfirmModalOpened) return;
                         await Router.WaitModalTransition();
                         await Router.PushModal(ResourceKeys.ConfirmCycleCheck,false);
+                        _isConfirmModalOpened = true;
                     }
                     else
                     {
+                        if (!_isConfirmModalOpened) return;
                         await Router.WaitModalTransition();
                         await Router.PopModal(false);
+                        _isConfirmModalOpened = false;
                     }
                 })
                 .AddTo(this);
