@@ -39,7 +39,7 @@ namespace SuiZin.InGame
         [TabGroup("Jump","Jump Check Height")][HideLabel]
         [SerializeField] private float jumpCheckHeight = 6.0f;
         [TabGroup("Jump","Can Jump")][HideLabel]
-        public bool canJump = true;
+        public bool canJump;
 
         private float _currentPitch = 0f;
         
